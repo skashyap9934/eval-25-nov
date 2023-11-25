@@ -20,16 +20,37 @@ function Student(name, roll_no, presentClass, section, marks) {
     console.log(`\n+-----------------------------------------+`);
     console.log(`|               REPORT CARD               |`);
     console.log(`+-----------------------------------------+`);
-    console.log(`| Name:        ${this.name}`);
-    console.log(`| Roll No.:    ${this.roll_no}`);
-    console.log(`| Class:       ${this.presentClass}`);
-    console.log(`| Section:     ${this.section}`);
+
+    let tempName = `| Name:              ${this.name}`;
+    while (tempName.length < 41) tempName += " ";
+    console.log(`${tempName} |`);
+
+    let tempRoll = `| Roll No.:          ${this.roll_no}`;
+    while (tempRoll.length < 41) tempRoll += " ";
+    console.log(`${tempRoll} |`);
+
+    let tempClass = `| Class:             ${this.presentClass}`;
+    while (tempClass.length < 41) tempClass += " ";
+    console.log(`${tempClass} |`);
+
+    let tempSec = `| Section:           ${this.section}`;
+    while (tempSec.length < 41) tempSec += " ";
+    console.log(`${tempSec} |`);
     let sum = 0;
     for (let key in this.marks) {
-      console.log(`| ${key.toUpperCase()}:      ${this.marks[key]}`);
+      let temp = "";
+      temp += `| ${key.toUpperCase()}`;
+      while (temp.length < 21) temp += " ";
+      temp += this.marks[key];
+      while (temp.length < 41) temp += " ";
+      console.log(`${temp} |`);
       sum += +this.marks[key];
     }
-    console.log(`| Percentage:  ${sum / Object.keys(this.marks).length}`)
+    console.log(
+      `| Percentage:        ${
+        sum / Object.keys(this.marks).length
+      }                   |`
+    );
     console.log(`+-----------------------------------------+\n`);
   };
 }
